@@ -1,0 +1,302 @@
+<!--
+  Welcome to the FIRST open source file for floobfloob!
+
+  This is for the LeaderboardV2 (published mid April 2024).
+
+  INFO:
+  - Little information boxes are placed here and there, and are marked with the following Kaomoji: "o(*￣▽￣*)ブ"
+  - Some URLs or paramters may be redacted (displayed as '[[REDACTED]]'), since it could give authorization/access to 
+  databases or other sensitive info.  
+
+  This is also surprisingly the **shortest** functional [public] floobfloob app, sitting at around 272 lines of HTML/CSS/JS combined. (5.29.2024  @ ~18:30)
+-->
+
+<html style=';;overflow:hidden'>             
+  <head>
+     <!-- o(*￣▽￣*)ブ
+        This is the "head" HTML element. It is usually the first thing to be loaded on a page,
+        and usually contains stuff like styles, scripts, external resources, meta content, and more.
+     -->
+     <meta charset="utf-8">
+     <title id='_.1t'>Leaderboard</title>
+     
+     <script src="https://floobfloob.com/[[REDACTED]]/lsquery/s-lsquery-cors-run2.js" app> </script>       
+
+     <link rel='stylesheet' href="https://resources.floobfloob.com/__public/dropdowns.css" />      
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">                
+     <meta name="wb_main" content="wb_element 4d697ff752b3842862c022d4d10f478841b2191985779b37807888b260e726ce">  
+     <link rel="preconnect" href="https://fonts.googleapis.com" />
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Overpass+Mono:wght@300..700&family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />   
+     <link rel="shortcut icon" type="image/x-icon" />      
+     
+     <script src="https://[[REDACTED]]" crossorigin="anonymous"> </script>    
+     <style type="text/css">          
+         /* o(*￣▽￣*)ブ
+            To those reading the open-source version: This is the CSS section of the page.
+            CSS is used to define styles/animations/etc. for HTML Elements.
+         */
+         * {color:white;font-family:"Figtree",sans-serif;}              
+         h1,h2,h3,h4,Hs{display:inline}
+         div[board]{display:flex;flex-direction:column;background-color:;width:calc(520px - 20px);height:90%;} 
+         div[board_entry]{border-left:solid 4px;background:linear-gradient(to right,#444,#666 );box-shadow:0 0 19px #FFF4;border-radius:6px;padding:9px;margin-bottom:4.13px;transition:.43s;width:100%; display:flex;flex-direction:row;height:50px;text-align:left}
+         div[board_entry]:hover{transform:translateX(-20.5px);filter:brightness(90%);transition:.42s;}  
+         div[board_entry] img[pfp]{object-fit:cover;height:100%;aspect-ratio:1/1;border-radius:6px;}       
+         div[userinfo]{margin-left:15px;display:flex;flex-direction:column;justify-content:center;} 
+         span[label],span[title]{font-weight:600;font-size:19.5px;}  
+         
+         xyz{color:#999;font-weight:396;'';font-size:13.2px;}  
+         
+         div[board_entry].third{background:linear-gradient(to left,#4d2303,#26190f);box-shadow:0 0 12px #4d2d15}
+         div[board_entry].second{background:linear-gradient(to left,#6f7d82,#3b464a);box-shadow:0 0 12px gray}                
+         div[board_entry].first{background:linear-gradient(to left,#a87f32,#544202)!important;box-shadow:0 0 12px #9c8123;}
+         div[rwlinfo] img[crnc]{width:20px;height:20px;margin-left:10px;} 
+         div[rwlinfo]{div;display:flex;height:100%;align-items:center;justify-content:end;text-align:right;}   
+         
+         .sel11e23Fjihj431h1{border:solid 2px blue;box-sizing: border-box;}  
+         .sel11e23Fjihj431h1{filter:drop-shadow(0 0 10px blue inset);}        
+
+         button,select{border:none;border-radius:6px;padding:5px;transition:.35s;font-weight:450;cursor:pointer;padding-right:12.0px;padding-left:12.0px;
+            margin:6.67px;background-color:#7d9bba;box-shadow:0 0 12px lightblue;color:white!important;outline:none;}
+         button:hover,select:hover{transition:.35s;filter:brightness(80%);transform:scale(0.95) rotate(2.311deg)} 
+         br{user-select:none;;}
+      </style> 
+    </head>
+    <body style="background:linear-gradient(to bottom right, black, darkmagenta);background-repeat:no-repeat;background-size:100% 100%;background-attachment:fixed;;">           
+
+        <!-- o(*￣▽￣*)ブ
+          Below is the actual HTML page structure. This includes text and other elements. 
+          On the leaderboard page, most of the content is generated in the JavaScript section further down.    
+        -->
+        <h1 style='display:block;width:100%;text-align:center;margin-top:15px;filter:drop-shadow(0 0 15px #FFFE)'>Leaderboard</h1>
+        <center>
+            <h3 style='display:inline;!important !on;text-align:center;width:99%;' placing>
+                <xyz>Your place:</xyz> #13  
+            </h3>
+        </center> 
+        <br/>
+         
+        <center>
+            <ppl style=";color:black!important;text-align:center;"> 
+                <center>
+                    <dropdown value="FFP" style='color:black;' opz rgbTheme='95, 43, 128'>
+                        <optgroup label="Main">
+                            <option value='FFP'>FFP</option>          
+                            <option value='XP'>XP</option>           
+                        </optgroup>
+                        <optgroup label='Events'>   
+                            <option value="FSC">Fiesta Credits</option>          
+                            <option value="BTN">Clicks on THE BUTTON</option>
+                        </optgroup>
+                        <optgroup label="Inventory">
+                            <option value='CIV'>Combined inventory Value (CIV)</option>   
+                            <option value="TIQ">Total Inventory Quantity (TIQ)</option>
+                            <option value="IS1">Items Sold</option>
+                        </optgroup>  
+                        <optgroup label='Social'>       
+                            <option value="FLW">Followers</option>           
+                            <option value='PLY'>Playtime</option>   
+                        </optgroup>    
+                        <optgroup label="Dailies">
+                            <option value='DXP'>XP (Daily)</option>
+                        </optgroup>
+                        <optgroup vnb label="Misc">
+                            <option value='FPS'>Highest FPS (LLB)</option>      
+                        </optgroup> 
+                    </dropdown>  
+                    <button sel_load style='color:black;'>
+                        LOAD BOARD
+                    </button>              
+                 </center>
+            </ppl>
+            <br/>
+            <div pgbar1 style='opacity:0;transition:opacity 1s;width:345px;height:10px;display:block;padding:6px;border-radius:4px;background-color:rgba(0,0,0,.5);text-align:left!important;'>
+               <div pgbar2 style="transition:width .355s;a;display:block;height:100%;width:1%;border-radius:4px;background-color:lightgreen;box-shadow:0 0 15px lime;"></div>
+            </div>
+            
+        </center>
+        <br/>
+        <br> 
+        <center>
+            <div board o>
+               
+            </div>  
+        </center>
+        <script src='https://resources.floobfloob.com/__public/dropdowns.js' at=''> </script>
+        <script src='https://floobfloob.com/common.js' type="module"> </script> 
+        <script type="module">  
+            /* o(*￣▽￣*)ブ
+              This is the most important part of the page: The JavaScript!!
+              This is what makes everything function.
+              
+              Also I can't exactly explain most of what happens below without writing a 500 page essay.
+            */
+       		  let $=(document["$ref"]); 
+            $.i ('_.1t').innerHTML+=' || FloobFloob ';;   
+            Array.prototype.sortNum=(n)=>{      
+                return n.sort((a, b) => a[1] - b[1]);
+            };
+            
+            var s=async()=>{   	  
+                let [limited,limit,timer,times]=[false,4,0,0];
+                setInterval(()=>{
+                    timer+=0.1;
+                    if(timer>20){timer=0;times=0;}
+                    if(times>(limit)){limited=true;document.body.innerHTML=`<pcps style='color:white;'>You have been rate limited. Please try to make less API requests. If you think this is a mistake, contact admin@floobfloob.</pcps>`}
+                },100) 
+                const imgs={  
+                   	FFP:'/ffp.-2.png', 
+                    XP:'/xps_egraphic[.jpg',
+                    CIV:"https://i.ibb.co/Fq5tHvM/New-Project-2024-04-16-T104831-468.png",
+                    FSC:"/ezimg/fiestatoken",
+                    PLY:'/ezimg/time',
+                    IS1:'/blank.png',
+                    TIQ:"/blank.png",
+                    FLW:"/blank.png"
+                }
+                var xsps_raw=await (await fetch("https://floobfloob.com/api/mini-apps/[[REDACTED]]")).text();
+                var asps=(await ($.fl(`/market/branch1/_salestats`)));
+                let cache={};
+                var getCiv=async(userKey)=>{
+                  	let total=0;
+                  	const _inv=cache[`inv_${userKey}`]||await($.fl(`/invt/${userKey}`)); 	
+                    cache[`inv_${userKey}`]=(_inv);
+                    for(let e in _inv){total+=(Number((asps[e]||"1/123").split('/')[0])*_inv[e])} 
+                    return(total||1);
+                }
+                var getTotalInv=async(userKey)=>{
+                    let total=0; 
+                    const _inv=cache[`inv_${userKey}`]||await($.fl(`/invt/${userKey}`));
+                    cache[`inv_${userKey}`]=(_inv);
+                    for(let i in _inv){total+=Math.floor(_inv[i])};
+                    return (total);
+                }     
+                var getXP=async(userkey,lnstvb)=>{
+                  	const lvls=(xsps_raw.replaceAll('\n',`/`).split("/"));
+                    let userInfo=await $.fl(`/accounts/accounts/${userkey}/e`);
+                    let gathered=0;
+                    for(let ie=0;ie<userInfo.xpLvl;ie++){ 
+                     	gathered+=Number(lvls[ie].split(':')[1])
+                    };  
+                    gathered+=Number(userInfo.xp);
+                    return(
+                        (!lnstvb?`${userInfo.xpLvl}\n<br/>(${(gathered===100&&userInfo.xpLvl===1?0:gathered.toLocaleString('en-us'))})`:(userInfo.xpLvl===100&&gathered===100?0:gathered))
+                    ); 
+                }
+                
+                const Acs=await Number(await $.fl('/accounts/account_ids_GT'));   
+                const Acn=await $.fl("/accounts/accounts");	
+                const blacklist=[4,6,8,9,12,13,14,18,19,20,0,10];
+                const isBlacklisted=(n)=>{
+                    let b=false;blacklist.forEach((e,i)=>{if(e===n||n==="null"){b=true;}});return(b);}
+                const __load=async(ty)=>{
+                    times++;
+                    $.qi("div[board]").innerHTML=``;
+                  	let MstAR=[];
+                    // console.clear()
+                  	$.qs("pgbar1").style.opacity=0;;;
+                  	let [cr,mx]=[0,Object.keys(Acn).length];   
+                    for(let index in Acn) {
+                        $.qs('pgbar1').style.opacity=1
+                        cr++;$.qs("pgbar2").style.width=`${(cr/mx)*1e2}%`;
+                        if(cr===mx-1||(cr/mx)>.95){setTimeout(()=>{$.qs('pgbar1').style.opacity=0},2e3)}
+                        if(!isBlacklisted(Number(index.substring('admin_90'.length)))){
+                            // BEHOLD:
+                            /*
+                                The messiest section of code on floobfloob.
+                                It's a very large conditional operator composed of many other conditional operators.          
+                                It is nicknamed the Conditional Slope of Death. (very weird name but whatev)
+                            */       
+                            MstAR.push (      
+                                [index,
+                                    (ty==='FFP'?Acn[index].ffp:
+                                        (ty==="CIV"?await getCiv(index):
+                                            (ty===('Bagel Points'||"bgp")?Acn[index].bgp:
+                                                (ty==="XP"?await getXP(index,true):
+                                                    (ty==="TIQ"?await getTotalInv(index):
+                                                        (ty==='IS1'?await(await $.fl(`/accounts/SRStats/items_sold/${index}`)||0):
+                                                            (ty==="FLW"?await(await($.fl(`/accounts/userpublics/followers/${index}`))||0):
+                                                                (ty==='PLY'?Acn[index].playtime||0:
+                                                                    (ty==="BTN"?await Number(await $.f(`https://[[REDACTED]]/btnsc/${index||$.ls.get('adLinkLocal')}/.json`))||0:
+                                                                        (ty==='FPS'?await Number(await $.fl(`/scores/fps/${index}`))||0:
+                                                                            (ty==="DXP"?(await $.fl(`/daily-scores/xp/${index}`))||0:
+                                                                                (ty==='FSC'?Acn [index]['fsc']:''))))))))))))])
+                        }
+                    }
+                    MstAR=Array.prototype.sortNum(MstAR);
+                    // console.log(MstAR);
+                    MstAR.forEach(async(e,i2)=>{
+                        let i3=i2+1;
+                        let i=Number(e[1-1].substring("admin_90".length));
+                        // console.log(i,Acn[`admin_90${i}`]);   	
+                        // console.log(`CONO:BREAKPOINT:?3==`);
+            
+                        if(!isBlacklisted (i)&&Acn['admin_90'+i]&&(!e[0]==='null'||true)) { 	
+                            const n=document.createElement('div');
+                            var [_kk,key]=[0,`admin_90${i}`];
+                            var elm=Acn[key]||{}
+                            // console.log(`CONO:BREAKPOINT:!1`);  
+                    
+                            var totime=(sec)=>{           
+                                let se2cs=sec/1;
+                                var day=Math.floor(sec/60/60/24);
+                                var hr=Math.floor(sec/60/60)-(day*24);
+                                var min=Math.floor(sec/60)-((day*24*60)+(hr*60));
+                                var secs=Math.floor(sec)-((day*24*60* 60)+(hr*60*60)+(min*60));
+                                                    
+                                if(day>=1){return(`${day.toFixed(0)}d ${hr.toFixed(0)}h`)}  
+                                if(hr>=1){return(`${hr.toFixed(0)}h ${min.toFixed(0)}m`)}                
+                                if(min>=1){return(`${min.toFixed(0)}m ${secs.toFixed(0)}s`) }                    
+                                return(`${secs.toFixed(0)}s`);
+                            }       
+                            const info={    
+                                name:elm.accountName,
+                                add:elm.accountAddress,   
+                                pfp:elm.accountInfo.profilePicture,
+                                pts:e[1]||0 	
+                            }  
+                            const testTmp=document.createElement('img');testTmp.src=info.pfp 
+                            if($.ls.get('adLinkLocal')===key){$.qi(`h3[placing]`).innerHTML=`<xyz style='font-size:1em;'>Your Place:</xyz> #${Object.keys(Acn).length-i3-10}`}  
+                            n.style.order=((Object.keys(Acn).length-i3-10)||-info.pts)||"";
+                            n.style.marginBottom='20px;';var slet=(Object.keys(Acn).length-i3)-10;;
+                            // console.log(`CONO:BREAKPOINT:!2`);
+                            function isOdd(num){return(num%2);}
+                            n.innerHTML=`
+                              <div style='display:${elm.cache["mark-important"].banned?'':""}' board_entry class='${($.ls.get ('adLinkLocal')===key)?'sel11e23Fjihj431h':""} ${isOdd(slet)===1?'oddboard':"evenboard"} ${   
+                                    (slet===1)?'first':((slet)===2?'second':(slet===3?"third":""))
+                              }'  style="margin-bottom:8px;background:linear-gradient(to right,black,#666)!important;1">
+                                <i place style='height:100%;width:24.5px;color:#888;margin-top:16px;font-size:14px;margin-right:10px;'>&nbsp;${(slet=== 1?'#1':(slet===2?"#2":(slet===3?'#3':'#'+((Object.keys(Acn).length-i3)-10))))}&nbsp;</i>
+                                <img pfp style='object:fit;object-fit:cover;' src='${info.pfp||"https://floobfloob.com/placeholder.png"}' />          
+                                <div userinfo style="width:258px;background-color:transparent">
+                                    <a href='/u/${info.add}' style="text-decoration:none;">
+                                        <span label style="height:0.89em" title>${info.name} 
+                                            ${(Acn[key].subscriptions.premium?'<img title="This user is subscribed to FloobFloob Premium." src="/resources/extra_cns/n_post_4.16.24_1144/3dgifmaker90218.gif" mini style="width:1.334em;height:1.334em; ;aspect-ratio:1/1;margin-left:3px;position:relative;top:6.4px;filter:brightness(150%) drop-shadow(0 0 12px lightblue)" setSmall_premiumVector hiBraylon />':"")}</span>
+                                    </a>
+                                    <xyz address style='margin-top:0.08px;'>&hairsp;${info.add}</xyz>
+                                </div>
+                                <div rwlinfo ? style=''>
+                                    <nps style="width:200px;" val>${
+                                        ty==="PLY"?totime(info.pts):
+                                            (!(ty==='XP')?(ty==="CIV"?Intl.NumberFormat('en-US',{notation:"compact",maximumFractionDigits:1}).format(Number(info.pts)):info.pts.toLocaleString('en-us')):await getXP(key,false))
+                                    }</nps>			
+                                    <a href="${ty=== "FFP"?'/[[REDACTED]]':"#E"}"><img crnc src='${imgs[ty]}' -1 /></a>
+                                </div>
+                            </div>
+                            `;
+                            $.qi("div[board]") .appendChild(n)
+                            // console.info($.qi('div[board]').innerHTML);
+                        }
+                    });
+                }
+                
+                $.qi("button[sel_load]").addEventListener('click',async()=>{
+                    __load($.qi('dropdown[opz]').value);
+                });   		    
+                __load("FFP");
+                // for(let i=1;i<=Acs;i++){}       
+            }
+            
+        ;s();
+       </script>
+    </body>
+</html>
